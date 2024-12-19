@@ -5,19 +5,17 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 # Load the preprocessed dataset
-dataset_path = "./data/Training_Dataset_Processed.csv"
+dataset_path = "./Training_Dataset_Processed.csv"
 
-# Check if the file exists
-if not os.path.exists(dataset_path):
-    raise FileNotFoundError(f"Dataset not found at {dataset_path}")
-
-# Read the CSV file
 try:
+    # Load the dataset
     data = pd.read_csv(dataset_path)
     print("Dataset loaded successfully!")
-    print(data.head())  # Display the first few rows of the dataset
+    print(data.head())  # Display the first few rows for verification
+except FileNotFoundError:
+    print(f"Dataset not found at {dataset_path}")
 except Exception as e:
-    print(f"An error occurred while reading the dataset: {e}")
+    print(f"An error occurred while loading the dataset: {e}")
 # Feature engineering
 data['num_subdomains'] = data['having_Sub_Domain'].apply(lambda x: 1 if x >= 0 else 0)
 data['security_score'] = (
