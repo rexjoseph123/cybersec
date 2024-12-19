@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 # Load the preprocessed dataset
-dataset_path = r"C:\Users\rexjo\Downloads\phishing+websites\Training_Dataset_Processed.csv"  # Replace with your actual path
+dataset_path = "./data/Training_Dataset_Processed.csv"
 
 # Check if the file exists
 if not os.path.exists(dataset_path):
